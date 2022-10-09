@@ -48,25 +48,15 @@ Links for more information about git
 Create a copy of the `.env` file in the project root and name it `.env.local`, this file contains your local changes for the environment variables used in the project.
 
 #### Docker
-The project is built upon the amazing [Symfony Docker](https://github.com/dunglas/symfony-docker) repository.
-
-Build the docker images with the following command:
-```bash
-docker compose build --pull --no-cache
-```
-
-Start the containers in detached mode & visit `https://localhost/`
+Start the containers in detached mode & visit `https://localhost:8000/`
 ```bash
 docker compose up -d
 ```
 
 To stop the containers, use the following command:
 ```bash
-docker compose down --remove-orphans
+docker compose down
 ```
-
-In case your browser [doesn't trust the tls certificate](https://github.com/dunglas/symfony-docker/blob/main/docs/troubleshooting.md#fix-chromebrave-ssl) provided by the local caddy webserver, have a look at the [troubleshooting doc](https://github.com/dunglas/symfony-docker/blob/main/docs/troubleshooting.md).  
-_**Note:** execute the commands in an administrative command prompt._
 
 #### Composer & NPM
 In case you didn't use the docker containers you need to install the Composer dependencies
@@ -83,7 +73,7 @@ npm install
 Either start up the project with docker or use the Symfony CLI, then run the npm `dev-server` command to have a rebuild of any changes to css or js instantly.
 You can also start up the build-in webserver from Symfony AND use the Docker setup [as described here](https://symfony.com/doc/current/setup/symfony_server.html#symfony-server-docker).
 ```bash
-symfony serve
+symfony server:start -d
 ```
 ```bash
 docker compose up -d
@@ -92,6 +82,6 @@ docker compose up -d
 npm run dev-server
 ```
 
-After starting up the services the project will be available at`https://localhost/`.
+After starting up the services the project will be available at`https://localhost:8000/`.
 
 
